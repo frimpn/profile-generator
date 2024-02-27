@@ -46,9 +46,9 @@ function manager(){
 ]).then(managerInput => {
 let manager = new Manager(managerInput.name,managerInput.id,managerInput.email,managerInput.officeNumber)
 
-//onsole.log(managerInfo)
+
 teamMembers.push(manager)
-// console.log(teamMembers)
+
 
 menu()
 })
