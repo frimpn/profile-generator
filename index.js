@@ -37,7 +37,7 @@ let managerInput = inquirer.prompt([
     {
         type: 'input',
         name: 'officeNumber',
-        message: "what is thr team manager's office number?"
+        message: "what is the team manager's office number?"
 
     }
 
@@ -49,6 +49,7 @@ let managerInfo = new Manager(managerInput.name,managerInput.id,managerInput.ema
 
 teamMembers.push(managerInfo)
 
+menu()
 
 }
 
@@ -86,6 +87,7 @@ function engineer(){
     
     teamMembers.push(engineerInfo)
     
+    menu()
     
     }
 
@@ -123,7 +125,33 @@ function engineer(){
         
         teamMembers.push(internInfo)
         
+        menu()
         
         }
         
     
+function menu(){
+
+    let menuOptions = inquirer.prompt([{
+
+        type:'list',
+        name: 'menu',
+        message: 'please pick an option?',
+        choices: ['Add an engineer', 'Add an intern', 'Finish building the team']
+
+
+    }])
+
+
+    if(menuOptions.choices === 'Add an engineer'){
+        engineer()
+    }else if(menuOptions.choices === 'Add an intern'){
+        intern()
+    }else{
+        createHtml()
+    }
+
+    
+
+
+}
