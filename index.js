@@ -54,6 +54,8 @@ menu()
 
 }
 
+manager()
+
 function engineer(){
 
     let engineerInput = inquirer.prompt([
