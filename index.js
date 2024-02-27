@@ -1,7 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const inquirer = require("inquirer");
+const inquirer = require('inquirer');
 const path = require("path");
 const fs = require("fs");
 
@@ -18,7 +18,7 @@ const teamMembers = []
 
 function manager(){
 
-let managerInput = inquirer.prompt([
+ inquirer.prompt([
 
     {
     type:'input',
@@ -43,22 +43,21 @@ let managerInput = inquirer.prompt([
     }
 
    
-])
-
+]).then(managerInput => {
 let managerInfo = new Manager(managerInput.name,managerInput.id,managerInput.email,managerInput.officeNumber)
 
 
 teamMembers.push(managerInfo)
 
 menu()
+})
 
 }
 
-manager()
 
 function engineer(){
 
-    let engineerInput = inquirer.prompt([
+    inquirer.prompt([
     
         {
         type:'input',
@@ -83,20 +82,23 @@ function engineer(){
         }
     
        
-    ])
+    ]).then( engineerInput=>{
     
     let engineerInfo = new Engineer(engineerInput.name,engineerInput.id,engineerInput.email,engineerInput.gitHub)
     
     
     teamMembers.push(engineerInfo)
-    
+
     menu()
+  })
+    
+    
     
     }
 
     function intern(){
 
-        let internInput = inquirer.prompt([
+          inquirer.prompt([
         
             {
             type:'input',
@@ -121,21 +123,22 @@ function engineer(){
             }
         
            
-        ])
+        ]).then(internInput=>{
         
-        let internInfo = new Manager(internInput.name,internInput.id,internInput.email,internInput.school)
+        let internInfo = new Intern(internInput.name,internInput.id,internInput.email,internInput.school)
         
         
         teamMembers.push(internInfo)
         
         menu()
-        
+        })
+    
         }
         
     
 function menu(){
 
-    let menuOptions = inquirer.prompt([{
+     inquirer.prompt([{
 
         type:'list',
         name: 'menu',
@@ -143,17 +146,18 @@ function menu(){
         choices: ['Add an engineer', 'Add an intern', 'Finish building the team']
 
 
-    }])
+    }]).then(menuOptions =>{
 
 
-    if(menuOptions.choices === 'Add an engineer'){
+    if(menuOptions.menu === 'Add an engineer'){
         engineer()
-    }else if(menuOptions.choices === 'Add an intern'){
+    }else if(menuOptions.menu === 'Add an intern'){
         intern()
     }else{
         createHtml()
     }
 
+})
     
 
 
@@ -163,7 +167,13 @@ function menu(){
 function createHtml(){
     const html = render(teamMembers)
 
-    fs.writeFile(outputPath,html,(err)=>{
+    fs.writeFile('team.html',html,(err)=>{
+        if(err){
         console.log(err)
+        } else{
+            console.log('Html file generated successfully')
+        }
     })
 }
+
+manager()
