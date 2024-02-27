@@ -88,4 +88,42 @@ function engineer(){
     
     
     }
+
+    function intern(){
+
+        let internInput = inquirer.prompt([
+        
+            {
+            type:'input',
+            name: 'name',
+            message: "what is the intern's name?"
+            },
+            {
+                type:'input',
+                name:'id',
+                message: "what is the team intern ID?"
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: "what is the team intern email?"
+            },
+            {
+                type: 'input',
+                name: 'school',
+                message: "what school does the intern go to??"
+        
+            }
+        
+           
+        ])
+        
+        let internInfo = new Manager(internInput.name,internInput.id,internInput.email,internInput.school)
+        
+        
+        teamMembers.push(internInfo)
+        
+        
+        }
+        
     
