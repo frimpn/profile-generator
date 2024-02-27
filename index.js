@@ -52,4 +52,40 @@ teamMembers.push(managerInfo)
 
 }
 
+function engineer(){
 
+    let engineerInput = inquirer.prompt([
+    
+        {
+        type:'input',
+        name: 'name',
+        message: "what is the team engineer name?"
+        },
+        {
+            type:'input',
+            name:'id',
+            message: "what is the team engineer ID?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "what is the team engineer email?"
+        },
+        {
+            type: 'input',
+            name: 'gitHub',
+            message: "what is the team engineer gitHub?"
+    
+        }
+    
+       
+    ])
+    
+    let engineerInfo = new Engineer(engineerInput.name,engineerInput.id,engineerInput.email,engineerInput.gitHub)
+    
+    
+    teamMembers.push(engineerInfo)
+    
+    
+    }
+    
