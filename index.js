@@ -44,10 +44,11 @@ function manager(){
 
    
 ]).then(managerInput => {
-let managerInfo = new Manager(managerInput.name,managerInput.id,managerInput.email,managerInput.officeNumber)
+let manager = new Manager(managerInput.name,managerInput.id,managerInput.email,managerInput.officeNumber)
 
-
-teamMembers.push(managerInfo)
+//onsole.log(managerInfo)
+teamMembers.push(manager)
+// console.log(teamMembers)
 
 menu()
 })
@@ -84,10 +85,10 @@ function engineer(){
        
     ]).then( engineerInput=>{
     
-    let engineerInfo = new Engineer(engineerInput.name,engineerInput.id,engineerInput.email,engineerInput.gitHub)
+    let engineer = new Engineer(engineerInput.name,engineerInput.id,engineerInput.email,engineerInput.gitHub)
     
     
-    teamMembers.push(engineerInfo)
+    teamMembers.push(engineer)
 
     menu()
   })
@@ -125,10 +126,10 @@ function engineer(){
            
         ]).then(internInput=>{
         
-        let internInfo = new Intern(internInput.name,internInput.id,internInput.email,internInput.school)
+        let intern = new Intern(internInput.name,internInput.id,internInput.email,internInput.school)
         
         
-        teamMembers.push(internInfo)
+        teamMembers.push(intern)
         
         menu()
         })
@@ -177,3 +178,4 @@ function createHtml(){
 }
 
 manager()
+
